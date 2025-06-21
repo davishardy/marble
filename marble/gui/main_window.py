@@ -8,6 +8,8 @@ from core.retrieve import get_subfolders
 from core.open_app import open_blender
 from core.open_app import open_houdini
 from core.open_app import open_nuke
+from core.open_app import open_djv
+
 
 
 
@@ -142,11 +144,17 @@ class MainWindow(QMainWindow):
         nuke_button = QPushButton("Open Nuke")
         nuke_button.clicked.connect(open_nuke)
 
+        djv_button = QPushButton("Open DJV")
+        djv_button.clicked.connect(open_djv)
+
+
 
 
         characters_layout.addWidget(blender_button)
         characters_layout.addWidget(houdini_button)
         characters_layout.addWidget(nuke_button)
+        characters_layout.addWidget(djv_button)
+
 
 
         #characters_layout.addStretch() # Push content to the top
