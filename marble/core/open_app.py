@@ -8,3 +8,6 @@ def open_houdini():
 
 def open_nuke():
     os.system("open -a /Applications/Nuke15.1v4/NukeX15.1v4.app")
+
+def open_djv():
+    os.system("open -a /Applications/DJV2.app")
