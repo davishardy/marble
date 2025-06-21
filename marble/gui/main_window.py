@@ -1,10 +1,16 @@
 import os
 
-from PySide6.QtWidgets import QMainWindow, QTabWidget, QVBoxLayout, QWidget, QLabel, QPushButton
+from PySide6.QtWidgets import QMainWindow, QTabWidget, QVBoxLayout, QWidget, QLabel, QPushButton, QHBoxLayout
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction, QKeySequence
  
 from core.retrieve import get_subfolders
+from core.open_app import open_blender
+from core.open_app import open_houdini
+from core.open_app import open_nuke
+
+
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -97,6 +103,9 @@ class MainWindow(QMainWindow):
         """
         Sets up the 'Assets' tab with nested sub-tabs.
         """
+
+        # https://doc.qt.io/qtforpython-6/tutorials/basictutorial/tablewidget.html
+
         layout = QVBoxLayout(self.assets_tab)
 
         self.assets_sub_tab_widget = QTabWidget()
@@ -117,6 +126,31 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.assets_sub_tab_widget)
         layout.addStretch()
 
+        # Setup content for Characters tab
+        characters_layout = QVBoxLayout(self.characters_tab)
+        
+        # Add a label
+        characters_layout.addWidget(QLabel("Characters Content Here"))
+
+        # Add a button
+        blender_button = QPushButton("Open Blender")
+        blender_button.clicked.connect(open_blender)
+
+        houdini_button = QPushButton("Open Houdini")
+        houdini_button.clicked.connect(open_houdini)
+
+        nuke_button = QPushButton("Open Nuke")
+        nuke_button.clicked.connect(open_nuke)
+
+
+
+        characters_layout.addWidget(blender_button)
+        characters_layout.addWidget(houdini_button)
+        characters_layout.addWidget(nuke_button)
+
+
+        #characters_layout.addStretch() # Push content to the top
+
     def setup_sequence_tab(self):
         # Placeholder for Sequence tab content
         pass
@@ -124,3 +158,5 @@ class MainWindow(QMainWindow):
     def setup_shot_tab(self):
         # Placeholder for Shot tab content
         pass
+
+    
